@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fce4ec; /* Pink muda */
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: pulse 1.5s infinite alternate; /* Animasi detak jantung */
+        }
+
+        h1 {
+            color: #e91e63; /* Merah muda cerah */
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #ff9800; /* Oranye */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #fb8c00;
+        }
+
+        /* Animasi Detak Jantung */
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Animasi Confetti Sederhana */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffd700; /* Emas */
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall 5s linear infinite;
+        }
+        
+        /* Tambahkan beberapa confetti */
+        .confetti:nth-child(2) { left: 10%; background-color: #e91e63; animation-delay: 1s; }
+        .confetti:nth-child(3) { left: 40%; background-color: #2196f3; animation-delay: 2.5s; }
+        .confetti:nth-child(4) { left: 70%; background-color: #4caf50; animation-delay: 0.5s; }
+        .confetti:nth-child(5) { left: 90%; background-color: #ffd700; animation-delay: 3s; }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <audio id="musicPlayer" src="lagu_ultah.mp3" loop></audio>
+
+    <div class="confetti" style="left: 20%;"></div>
+    <div class="confetti" style="left: 50%;"></div>
+    <div class="confetti" style="left: 80%;"></div>
+    <div class="confetti" style="left: 5%;"></div>
+    <div class="confetti" style="left: 95%;"></div>
+
+    <div class="container">
+        <h1>🎉 Selamat Ulang Tahun, [DEWI ROSMAWATI]! 🎉</h1>
+        <p>Semoga hari-harimu penuh kebahagiaan dan semua impianmu tercapai!</p>
+        <p id="pesanTambahan" style="display: none; color: #00bcd4; font-weight: bold;">[Teks Rahasia/Harapan Tambahan di Sini]</p>
+        
+        <button class="btn" onclick="tampilkanPesan()">Klik untuk Pesan Rahasia & Musik!</button>
+    </div>
+
+    <script>
+        function tampilkanPesan() {
+            const pesan = document.getElementById('pesanTambahan');
+            const tombol = document.querySelector('.btn');
+            const musik = document.getElementById('musicPlayer'); 
+
+            if (pesan.style.display === 'none') {
+                pesan.style.display = 'block';
+                tombol.textContent = 'Sembunyikan Pesan';
+                musik.play(); // PUTAR MUSIK
+            } else {
+                pesan.style.display = 'none';
+                tombol.textContent = 'Klik untuk Pesan Rahasia & Musik!';
+                musik.pause(); // HENTIKAN MUSIK
+                musik.currentTime = 0; // Kembalikan ke awal
+            }
+        }
+    </script>
+</body>
+</html>
